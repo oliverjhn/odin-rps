@@ -49,3 +49,5 @@ playGame() {
         console.log("The computer went " + computerChoice + "and you went " + playerChoice + ", the result was a " + result + "\n");
     }
 }
+
+playGame();
