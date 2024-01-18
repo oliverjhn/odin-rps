@@ -36,4 +36,16 @@ function playRound(playerChoice, computerChoice) {
     }
     return "TIE";
 }
-//Use a switch statement to determine the winner
+
+playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    while ((playerScore + computerScore) < 5) {
+        let playerChoice = prompt("Rock, paper, or scissors? ");
+        let computerChoice = getComputerChoice();
+        let result = playRound(playerChoice, computerScore);
+
+        console.log("The computer went " + computerChoice + "and you went " + playerChoice + ", the result was a " + result + "\n");
+    }
+}
