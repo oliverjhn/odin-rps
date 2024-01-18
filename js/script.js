@@ -43,6 +43,9 @@ function playGame() {
 
     while ((playerScore + computerScore) < 5) {
         let playerChoice = prompt("ROCK, PAPER, OR SCISSORS? ").toUpperCase();
+        while (playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSORS") {
+            playerChoice = prompt("That is not a valid choice. Please choose between 'ROCK, PAPER, and SCISSORS'"); 
+        }
         let computerChoice = getComputerChoice();
         let result = playRound(playerChoice, computerChoice);
 
