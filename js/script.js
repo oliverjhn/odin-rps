@@ -1,7 +1,11 @@
-// //Create global variable computerChoice
-// let computerChoice = "";
-// //Create global vairable playerChoice
-// let playerChoice = "";
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+const output = document.querySelector("#output");
+const yourDisplay = document.querySelector("#yourscore");
+const computerDisplay = document.querySelector("#computerscore");
+
 
 //Create a function "getComputerChoice" that returns the computer's choice
 function getComputerChoice() {
@@ -21,6 +25,12 @@ function getComputerChoice() {
 
 //Create function "playRound" which takes two parameters of the player's choice and the computer's choice
 function playRound(playerChoice, computerChoice) {
+    let result = determineResult(playerChoice, computerChoice);
+
+    
+}
+
+function determineResult(playerChoice, computerChoice) {
     if (playerChoice != computerChoice) {
         switch (playerChoice) {
             case "ROCK":
@@ -44,7 +54,7 @@ function playGame() {
     while ((playerScore + computerScore) < 5) {
         let playerChoice = prompt("ROCK, PAPER, OR SCISSORS? ").toUpperCase();
         while (playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSORS") {
-            playerChoice = prompt("That is not a valid choice. Please choose between 'ROCK, PAPER, and SCISSORS'").toUpperCase(); 
+            playerChoice = prompt("That is not a valid choice. Please choose between 'ROCK, PAPER, and SCISSORS'").toUpperCase();
         }
         let computerChoice = getComputerChoice();
         let result = playRound(playerChoice, computerChoice);
@@ -76,3 +86,7 @@ function playGame() {
 }
 
 playGame();
+
+rockButton.addEventListener("click", () => {
+    playRound()
+})
