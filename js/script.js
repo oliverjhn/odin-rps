@@ -27,7 +27,7 @@ function getComputerChoice() {
 function playRound(playerChoice, computerChoice) {
     let result = determineResult(playerChoice, computerChoice);
 
-    
+
 }
 
 function determineResult(playerChoice, computerChoice) {
