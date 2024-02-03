@@ -23,11 +23,33 @@ function getComputerChoice() {
     }
 }
 
+let playerScore = 0;
+let computerScore = 0;
 //Create function "playRound" which takes two parameters of the player's choice and the computer's choice
 function playRound(playerChoice, computerChoice) {
     let result = determineResult(playerChoice, computerChoice);
 
+    output.textContent = "The computer went " + computerChoice + " and you went " + playerChoice + ", the result was a " + result;
+    switch (result) {
+        case "WIN":
+            playerScore += 1;
+            yourDisplay.textContent = playerScore;
+            break;
+        case "LOSS":
+            computerScore += 1;
+            computerDisplay.textContent = computerScore;
+            break;
+        default:
+            break;
+    }
 
+    if ((playerScore + computerScore) == 5) {
+        if (playerScore > computerScore) {
+            output.textContent = ("YOU WIN! The final score was " + playerScore + " to " + computerScore);
+        } else {
+            output.textContent = ("You lost, sad. The final score was " + playerScore + " to " + computerScore);
+        }
+    }
 }
 
 function determineResult(playerChoice, computerChoice) {
@@ -85,8 +107,8 @@ function playGame() {
     }
 }
 
-playGame();
+// playGame();
 
 rockButton.addEventListener("click", () => {
-    playRound()
+    playRound("ROCK", getComputerChoice());
 })
