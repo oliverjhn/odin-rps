@@ -7,11 +7,28 @@
     <title>Rock Paper Scissors</title>
 
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
+    <div id="score">
+        <h3>Your score - Computer score</h3>
+        <div id="score-display">
+            <div id="yourscore">0</div>
+            <div>-</div>
+            <div id="computerscore">0</div>
+        </div>
+    </div>
 
+    <div id="output">
+        This is a game of 'Rock, Paper, Scissors. Best of 5
+    </div>
+
+    <div id="button-container">
+        <button class="choice-button" id="rock">Rock</button>
+        <button class="choice-button" id="paper">Paper</button>
+        <button class="choice-button" id="scissors">Scissors</button>
+    </div>
 </body>
 
 </html>

@@ -1,7 +1,11 @@
-// //Create global variable computerChoice
-// let computerChoice = "";
-// //Create global vairable playerChoice
-// let playerChoice = "";
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+const output = document.querySelector("#output");
+const yourDisplay = document.querySelector("#yourscore");
+const computerDisplay = document.querySelector("#computerscore");
+
 
 //Create a function "getComputerChoice" that returns the computer's choice
 function getComputerChoice() {
@@ -19,8 +23,40 @@ function getComputerChoice() {
     }
 }
 
+let playerScore = 0;
+let computerScore = 0;
 //Create function "playRound" which takes two parameters of the player's choice and the computer's choice
 function playRound(playerChoice, computerChoice) {
+    let result = determineResult(playerChoice, computerChoice);
+
+    output.textContent = "The computer went " + computerChoice + " and you went " + playerChoice + ", the result was a " + result;
+    switch (result) {
+        case "WIN":
+            playerScore += 1;
+            yourDisplay.textContent = playerScore;
+            break;
+        case "LOSS":
+            computerScore += 1;
+            computerDisplay.textContent = computerScore;
+            break;
+        default:
+            break;
+    }
+
+    if ((playerScore + computerScore) == 5) {
+        if (playerScore > computerScore) {
+            output.textContent = ("YOU WIN! The final score was " + playerScore + " to " + computerScore);
+        } else {
+            output.textContent = ("You lost, sad. The final score was " + playerScore + " to " + computerScore);
+        }
+
+        Array.from(document.getElementsByClassName("choice-button")).forEach(currentButton => {
+            currentButton.disabled = true;
+        })
+    }
+}
+
+function determineResult(playerChoice, computerChoice) {
     if (playerChoice != computerChoice) {
         switch (playerChoice) {
             case "ROCK":
@@ -44,7 +80,7 @@ function playGame() {
     while ((playerScore + computerScore) < 5) {
         let playerChoice = prompt("ROCK, PAPER, OR SCISSORS? ").toUpperCase();
         while (playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice != "SCISSORS") {
-            playerChoice = prompt("That is not a valid choice. Please choose between 'ROCK, PAPER, and SCISSORS'").toUpperCase(); 
+            playerChoice = prompt("That is not a valid choice. Please choose between 'ROCK, PAPER, and SCISSORS'").toUpperCase();
         }
         let computerChoice = getComputerChoice();
         let result = playRound(playerChoice, computerChoice);
@@ -75,4 +111,9 @@ function playGame() {
     }
 }
 
-playGame();
+// playGame();
+Array.from(document.getElementsByClassName("choice-button")).forEach(currentButton => {
+    currentButton.addEventListener("click", () => {
+        playRound(currentButton.textContent.toUpperCase(), getComputerChoice());
+    })
+})
