@@ -49,6 +49,10 @@ function playRound(playerChoice, computerChoice) {
         } else {
             output.textContent = ("You lost, sad. The final score was " + playerScore + " to " + computerScore);
         }
+
+        Array.from(document.getElementsByClassName("choice-button")).forEach(currentButton => {
+            currentButton.disabled = true;
+        })
     }
 }
 
@@ -108,7 +112,8 @@ function playGame() {
 }
 
 // playGame();
-
-rockButton.addEventListener("click", () => {
-    playRound("ROCK", getComputerChoice());
+Array.from(document.getElementsByClassName("choice-button")).forEach(currentButton => {
+    currentButton.addEventListener("click", () => {
+        playRound(currentButton.textContent.toUpperCase(), getComputerChoice());
+    })
 })
